@@ -39,7 +39,7 @@ public class Converter {
             radioContacts = ImmutableList.of(new AnalogRadioContact(inputUnit.getAni()));
         }
 
-        return new OutputUnit(inputUnit.getCall(), radioContacts, smsContacts, ImmutableList.of());
+        return new OutputUnit(inputUnit.getId() + "", inputUnit.getCall(), radioContacts, smsContacts, ImmutableList.of());
     }
 
     private SmsContact createSmsContact(final InputPerson person) {
