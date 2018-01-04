@@ -2,6 +2,7 @@ package rwi.tetra.json.converter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import rwi.tetra.json.converter.input.InputFormat;
@@ -36,6 +37,9 @@ public class Main {
         } catch (IOException e) {
             LOG.error("Input file does not exist.");
             System.exit(-2);
+        } catch (JsonSyntaxException e) {
+            LOG.error("Input is not a valid JSON.");
+            System.exit(-3);
         }
 
         LOG.debug("Got input with {} units.", input.getUnits().size());
