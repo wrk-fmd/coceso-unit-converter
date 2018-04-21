@@ -48,20 +48,6 @@ public class Converter {
         return new OutputUnit(inputUnit.getId() + "", inputUnit.getCall(), radioContacts, smsContacts, ImmutableList.of());
     }
 
-    private List<SmsContact> splitToMultiple(final SmsContact contact) {
-        String[] numbers = contact.getPhoneNumber()
-                .split("\n");
-
-        List<SmsContact> contacts = Arrays.stream(numbers)
-                .map(number -> new SmsContact(contact.getOwner(), number))
-                .collect(Collectors.toList());
-        if (contacts.size() > 0) {
-            LOG.info("Splitted contact {} to contacts {}.", contact, contacts);
-        }
-
-        return contacts;
-    }
-
     private Stream<SmsContact> createSmsContact(final InputPerson person) {
         return Arrays.stream(person.getContact().split("\n"))
                 .map(numberNormalizer::normalize)
