@@ -21,11 +21,11 @@ public class NumberNormalizer {
         String normalizedString = "";
         if (StringUtils.isNotBlank(inputNumber)) {
             normalizedString = charMatcher.retainFrom(inputNumber);
-            if (normalizedString.matches("^0[1-9]+")) {
+            if (normalizedString.matches("^0[1-9][0-9]+")) {
                 normalizedString = normalizedString.replaceFirst("0", VALID_PREFIX);
             }
 
-            if (normalizedString.matches("^00[1-9]+")) {
+            if (normalizedString.matches("^00[1-9][0-9]+")) {
                 normalizedString = normalizedString.replaceFirst("00", "+");
             }
 
