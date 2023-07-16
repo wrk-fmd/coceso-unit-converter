@@ -16,6 +16,10 @@ import java.io.IOException;
 public class Main {
     private static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
+    public static final boolean CREATE_TETRA_CONTACTS = true;
+    public static final boolean CREATE_SMS_CONTACTS = false;
+    public static final boolean CREATE_ANALOG_CONTACTS = false;
+
     public static void main(String... args) {
         LOG.debug("Starting JSON converter with arguments: {}", (Object) args);
 
@@ -28,7 +32,7 @@ public class Main {
         String outputFileName = args[1];
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Converter converter = new Converter(true, false, false);
+        Converter converter = new Converter(CREATE_TETRA_CONTACTS, CREATE_SMS_CONTACTS, CREATE_ANALOG_CONTACTS);
 
         InputFormat input = null;
         try (FileReader fileReader = new FileReader(inputFileName)) {
