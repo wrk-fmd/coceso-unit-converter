@@ -28,7 +28,7 @@ public class Main {
         String outputFileName = args[1];
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Converter converter = new Converter();
+        Converter converter = new Converter(true, false, false);
 
         InputFormat input = null;
         try (FileReader fileReader = new FileReader(inputFileName)) {
